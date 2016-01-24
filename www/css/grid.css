@@ -21,6 +21,21 @@
     background-color: #999999;
     background-size: 100%;
 }
+.box span {
+/*    vertical-align:bottom; */
+   position: absolute;
+   bottom: 0;
+   right: 5px;
+   margin: 10px 5px 10px 10px;
+   padding: 8px;
+   text-align: right;
+}
+.text-box {
+   background:rgba(0,0,0,0.5);
+}
+.box div[class="title"] {
+   font-weight: bold;
+}
 .columns {
     position: relative;
     float: left;
