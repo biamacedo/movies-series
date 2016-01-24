@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Movies & Series</title>
+    <!-- Path to Framework7 Library CSS-->
+    <!-- <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css"> -->
+
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <!-- Modules styles-->
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-cover">
+        <div class="content-block">
+            <div id="central-wrapper">
+                <img id="profile-image" class="circular" />
+                <p><span id="username"></span></p>
+            </div>
+
+            <div class="content-block-title">Menu</div>
+            <div class="list-block">
+                <ul>
+                <li>
+                  <a href="#" class="item-link item-content">
+                    <div class="item-inner">
+                      <div class="item-title">Movies</div>
+                      <div class="item-after"><span class="badge">5</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="item-link item-content">
+                    <div class="item-inner">
+                      <div class="item-title">Series</div>
+                      <div class="item-after"><span class="badge">5</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="item-link item-content">
+                    <div class="item-inner">
+                      <div class="item-title">Social</div>
+                      <div class="item-after"><span class="badge">5</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a id="logout" class="item-link item-content close-panel">
+                    <div class="item-inner">
+                      <div class="item-title">Log Out</div>
+                    </div>
+                  </a>
+                </li>
+          </div>
+        </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+        <div class="login-screen modal-in">
+            <div class="view">
+              <div data-page="login" class="page">
+                <div class="page-content login-screen-content">
+                  <div class="login-screen-title">Movies & Series</div>
+
+                  <div class="list-block">
+                    <ul>
+                      <li>
+                        <div id="central-wrapper">
+                            <!-- <div class="fb-login-button" data-size="xlarge" data-auto-logout-link="false" scope="public_profile,email"  onlogin="checkLoginState();"></div> -->
+                            <!-- <button >Login With Facebook Plugin</button> -->
+                            <a id="login" href="#" class="button">Login With Facebook</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="list-block-label">
+                      <div id="status"></div>
+                      <p>@Rio de Janeiro, 2015</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+
+              <div class="left">
+                <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+              </div>
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Movies & Series</div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="content-block-title">Welcome To My Awesome App</div>
+              <div class="content-block">
+                <div class="content-block-inner">
+                  <p>Couple of worlds here because my app is so awesome!</p>
+                  <p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
+                </div>
+              </div>
+              <div class="content-block-title">What about simple navigation?</div>
+              <div class="list-block">
+                <ul>
+                  <li><a href="about.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">About</div>
+                        </div>
+                      </div></a></li>
+                  <li><a href="services.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Services</div>
+                        </div>
+                      </div></a></li>
+                  <li><a href="form.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Form</div>
+                        </div>
+                      </div></a></li>
+                </ul>
+              </div>
+              <div class="content-block-title">Side panels</div>
+              <div class="content-block">
+                <div class="row">
+                  <div class="col-50"><a href="#" data-panel="left" class="button open-panel">Left Panel</a></div>
+                  <div class="col-50"><a href="#" data-panel="right" class="button open-panel">Right Panel</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Toolbar-->
+        <div class="toolbar">
+          <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Facebook Login Script -->
+    <!-- <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '168233603530137',
+          cookie     : true,  // enable cookies to allow the server to access
+                              // the session
+          xfbml      : true,  // parse social plugins on this page
+          version    : 'v2.2' // use version 2.2
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script> -->
+
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Cordova  -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- Libraries -->
+    <script src="lib/fastclick/fastclick.js"></script>
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/openfb/openfb.js"></script>
+    <!-- Modules -->
+    <script type="text/javascript" src="js/modules/login.js"></script>
+    <script type="text/javascript" src="js/modules/storage.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>

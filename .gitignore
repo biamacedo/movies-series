@@ -1,0 +1,9 @@
+platforms/
+plugins/
+www/lib/jqm/demos/
+
+node_modules/
+
+
+# Not adding nativedroid2 just yet, to be used to provide Material Design look and feel
+www/lib/nativedroid2/

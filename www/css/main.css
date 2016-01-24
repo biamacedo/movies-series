@@ -1,0 +1,37 @@
+/*==============================*/
+/*========== SIDE MENU =========*/
+/*==============================*/
+#central-wrapper {
+    text-align: center;
+}
+
+#username {
+	font-style: oblique;
+	font-weight: lighter;
+	/*color: white;*/
+}
+
+.circular {
+	width: 100px;
+	height: 100px;
+    border: 4px solid white;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+
+#logout {
+	text-align: center;
+	float: none;
+}
+
+/*div[class*="col-"] {
+  background: #fff;
+  text-align: center;
+  color: #000;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+.row {
+  margin-bottom: 15px;
+}*/
