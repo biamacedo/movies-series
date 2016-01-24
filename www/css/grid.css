@@ -69,9 +69,12 @@
 /* desktop grid layout */
 @media (min-width: 641px) {
     .container {
-	    width: 70%;
+	    /*width: 70%;
       max-width:1200px;
-      margin: 12px auto;
+      margin: 12px auto;*/
+  	    width: 100%;
+        /*max-width:1200px;*/
+        margin: 0px auto;
     }
     .column-container-9 {
       position: relative;
