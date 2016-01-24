@@ -25,13 +25,8 @@
 	float: none;
 }
 
-/*div[class*="col-"] {
-  background: #fff;
-  text-align: center;
-  color: #000;
-  border: 1px solid #ddd;
-  padding: 5px;
+.demo-card-header-pic .card-header {
+    height: 40vw;
+    background-size: cover;
+    background-position: center;
 }
-.row {
-  margin-bottom: 15px;
-}*/

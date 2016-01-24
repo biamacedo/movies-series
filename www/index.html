@@ -17,6 +17,7 @@
     <!-- Modules styles-->
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/grid.css">
   </head>
   <body>
     <!-- Status bar overlay for fullscreen mode-->
@@ -38,7 +39,7 @@
                   <a href="#" class="item-link item-content">
                     <div class="item-inner">
                       <div class="item-title">Movies</div>
-                      <div class="item-after"><span class="badge">5</span></div>
+                      <div class="item-after"><span class="badge">1</span></div>
                     </div>
                   </a>
                 </li>
@@ -46,7 +47,7 @@
                   <a href="#" class="item-link item-content">
                     <div class="item-inner">
                       <div class="item-title">Series</div>
-                      <div class="item-after"><span class="badge">5</span></div>
+                      <!-- <div class="item-after"><span class="badge">5</span></div> -->
                     </div>
                   </a>
                 </li>
@@ -76,21 +77,13 @@
                 <div class="page-content login-screen-content">
                   <div class="login-screen-title">Movies & Series</div>
 
-                  <div class="list-block">
-                    <ul>
-                      <li>
                         <div id="central-wrapper">
-                            <!-- <div class="fb-login-button" data-size="xlarge" data-auto-logout-link="false" scope="public_profile,email"  onlogin="checkLoginState();"></div> -->
-                            <!-- <button >Login With Facebook Plugin</button> -->
-                            <a id="login" href="#" class="button">Login With Facebook</a>
+                            <p><a id="login" href="#" class="button button-fill color-blue">Login With Facebook</a></p>
                         </div>
-                      </li>
-                    </ul>
                     <div class="list-block-label">
                       <div id="status"></div>
                       <p>@Rio de Janeiro, 2015</p>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -98,92 +91,166 @@
 
       <!-- Your main view, should have "view-main" class-->
       <div class="view view-main">
-        <!-- Top Navbar-->
-        <div class="navbar">
-          <div class="navbar-inner">
-
-              <div class="left">
-                <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
-              </div>
-            <!-- We have home navbar without left link-->
-            <div class="center sliding">Movies & Series</div>
-          </div>
-        </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div class="pages navbar-through toolbar-through">
-          <!-- Page, data-page contains page name-->
-          <div data-page="index" class="page">
-            <!-- Scrollable page content-->
-            <div class="page-content">
-              <div class="content-block-title">Welcome To My Awesome App</div>
-              <div class="content-block">
-                <div class="content-block-inner">
-                  <p>Couple of worlds here because my app is so awesome!</p>
-                  <p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
+        <div class="pages">
+            <!-- Page, data-page contains page name-->
+            <div data-page="index" class="page toolbar-fixed navbar-fixed">
+
+                <!-- Top Navbar-->
+                <div class="navbar">
+                  <div class="navbar-inner">
+                      <div class="left">
+                          <!-- Right link contains only icon - additional "icon-only" class-->
+                          <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                      </div>
+                      <!-- We have home navbar without left link-->
+                      <div class="center sliding">Movies & Series</div>
+                  </div>
                 </div>
-              </div>
-              <div class="content-block-title">What about simple navigation?</div>
-              <div class="list-block">
-                <ul>
-                  <li><a href="about.html" class="item-link">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title">About</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="services.html" class="item-link">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title">Services</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="form.html" class="item-link">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title">Form</div>
-                        </div>
-                      </div></a></li>
-                </ul>
-              </div>
-              <div class="content-block-title">Side panels</div>
-              <div class="content-block">
-                <div class="row">
-                  <div class="col-50"><a href="#" data-panel="left" class="button open-panel">Left Panel</a></div>
-                  <div class="col-50"><a href="#" data-panel="right" class="button open-panel">Right Panel</a></div>
+
+                <div class="toolbar tabbar">
+                    <div class="toolbar-inner">
+                        <a href="#tab-1" class="tab-link active" data-tab=".tab1">Movies</a>
+                        <a href="#tab-2" class="tab-link" data-tab=".tab2">Series</a>
+                    </div>
                 </div>
-              </div>
+                <!-- Scrollable page content-->
+                <div class="page-content">
+                    <!-- Top Tabs -->
+                    <div class="tabs tabs-top">
+                        <div class="tab tab1 active">
+                            <!-- Movie Page  -->
+                            <div class='container'>
+
+                                    <div class="column-container-12 main-stories">
+
+                                        <div class="columns large-8 feature">
+                                            <div class='aspect ratio-feature'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <a href="pages/movie.html">
+                                                    <div class='box' style='background-image: url("img-demo/movie1.jpg");'>1</div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="large-4 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box' style='background-image: url("img-demo/movie2.jpg");'>2
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="large-4 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box' style='background-image: url("img-demo/movie3.jpg");'>3
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="large-4 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box' style='background-image: url("http://placehold.it/1000x1000");'>4
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="large-4 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box' style='background-image: url("http://placehold.it/100x100");'>5
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                   <div class="column-container-12 sub-stories">
+
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>11
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>12
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>13
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>14
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>11
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>12
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>13
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-3 columns">
+                                            <div class='aspect ratio-square'>
+                                            </div>
+                                            <div class='gutters'>
+                                                <div class='box'>14
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        <div class="tab tab2">2</div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
         <!-- Bottom Toolbar-->
-        <div class="toolbar">
+        <!-- <div class="toolbar">
           <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
-        </div>
-      </div>
+        </div> -->
+
     </div>
-
-
-    <!-- Facebook Login Script -->
-    <!-- <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '168233603530137',
-          cookie     : true,  // enable cookies to allow the server to access
-                              // the session
-          xfbml      : true,  // parse social plugins on this page
-          version    : 'v2.2' // use version 2.2
-        });
-      };
-
-      // Load the SDK asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script> -->
 
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>

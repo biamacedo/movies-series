@@ -68,28 +68,6 @@ login = {
 // successful.  See statusChangeCallback() for when this call is made.
 function getUserDetails() {
     console.log('Welcome!  Fetching your information.... ');
-    //
-    // FB.api('/me', function(response) {
-    //     console.log(window.JSON.stringify(response));
-    //     console.log(response);
-    //     console.log('Successful login for: ' + response.name);
-    //     login.user.name = response.name;
-    //
-    //     FB.api("/me/picture?width=100&height=100",  function(response) {
-    //         console.log(response.data.url);
-    //         login.user.photoUrl = response.data.url;
-    //
-    //         loginFinish();
-    //
-    //         console.log(login.user);
-    //
-    //         if (Storage.check()){
-    //             Storage.saveLogin();
-    //         }
-    //         login.loadUser();
-    //
-    //     });
-    // });
 
     openFB.api({path: '/me', success: function(data) {
         console.log(window.JSON.stringify(data));
