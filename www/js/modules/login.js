@@ -5,6 +5,7 @@
 
 login = {
     user: {
+        id: undefined,
         name: undefined,
         photoUrl: undefined
     },
@@ -51,32 +52,16 @@ login = {
 }
 
 /// == FACEBOOK SCRIPT ==  ///
-// function readPermissions() {
-//         openFB.api({
-//             method: 'GET',
-//             path: '/me/permissions',
-//             success: function(result) {
-//                 alert(JSON.stringify(result.data));
-//             },
-//             error: function(error){
-//                 console.log('Error: ' + error.message);
-//             }
-//         });
-//     }
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
 function getUserDetails() {
     console.log('Welcome!  Fetching your information.... ');
 
     openFB.api({path: '/me', success: function(data) {
         console.log(window.JSON.stringify(data));
         console.log(data);
-        console.log('Successful login for: ' + data.name);
+        console.log('Successful login for: ' + data.name + ' with Id: ' + data.id);
+        login.user.id = data.id;
         login.user.name = data.name;
-
-        console.log(data);
-        console.log(data.id);
         login.user.photoUrl = 'http://graph.facebook.com/v2.5/' + data.id + '/picture?width=100&height=100';
 
         loginFinish();

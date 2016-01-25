@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/framework7.material.colors.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+    <!-- Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Modules styles-->
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
@@ -105,6 +107,10 @@
                       </div>
                       <!-- We have home navbar without left link-->
                       <div class="center sliding">Movies & Series</div>
+                      <div class="right">
+                          <!-- Right link contains only icon - additional "icon-only" class-->
+                          <a href="pages/search.html" class="link"><i class="fa fa-search"></i></a>
+                      </div>
                   </div>
                 </div>
 
@@ -122,7 +128,7 @@
                             <!-- Movie Page  -->
                             <div class='container'>
 
-                                    <div class="column-container-12 main-stories">
+                                    <div id="main-stories" class="column-container-12 ">
 
                                         <div class="columns large-8 feature">
                                             <div class='aspect ratio-feature'>
@@ -185,7 +191,7 @@
 
                                     </div>
 
-                                   <div class="column-container-12 sub-stories">
+                                   <div id="sub-stories" class="column-container-12">
 
                                         <div class="large-3 columns">
                                             <div class='aspect ratio-square'>
@@ -253,6 +259,7 @@
                                         </div>
                                     </div>
                             </div>
+                        </div>
                         <div class="tab tab2">2</div>
                     </div>
                 </div>
@@ -277,6 +284,10 @@
     <!-- Modules -->
     <script type="text/javascript" src="js/modules/login.js"></script>
     <script type="text/javascript" src="js/modules/storage.js"></script>
+    <script type="text/javascript" src="js/modules/imdb.js"></script>
+    <script type="text/javascript" src="js/modules/search.js"></script>
+    <script type="text/javascript" src="js/modules/movie.js"></script>
+    <script type="text/javascript" src="js/modules/user-content.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>

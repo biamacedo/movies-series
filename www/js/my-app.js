@@ -31,7 +31,6 @@ myApp.onPageInit('login', function (page) {
 
 });
 
-// Callbacks to run specific code for specific pages, for example for About page:
 myApp.onPageInit('index', function (page) {
     console.log('Main Page Init');
 
@@ -43,6 +42,33 @@ myApp.onPageInit('index', function (page) {
         // If successiful
         myApp.loginScreen();
         //changePage('#login', 'slideup');
+    });
+
+});
+
+myApp.onPageInit('search', function (page) {
+    console.log('Search Page Init');
+
+    // Search Button
+    document.getElementById("searchGo").addEventListener("click", function(){
+        var inputSearch = $("#searchInput").val();
+        Search.searchForMovie(inputSearch);
+    });
+
+});
+
+myApp.onPageInit('movie', function (page) {
+    console.log('Movie Page Init');
+
+    console.log(page.query);
+
+    var id = page.query.id;
+    console.log(id);
+    Movie.getMovie(id);
+
+    document.getElementById("add").addEventListener("click", function(){
+        UserContent.addMovie(Movie.movie);
+        Storage.saveUserContent();
     });
 
 });

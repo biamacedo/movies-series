@@ -22,6 +22,18 @@ var app = {
             FastClick.attach(document.body);
         });
 
+        if (navigator.notification) { // Override default HTML alert with native dialog
+            console.log('Dialog Alert Activated');
+            window.alert = function (message) {
+                navigator.notification.alert(
+                    message,    // message
+                    null,       // callback
+                    "Error", // title
+                    'OK'        // buttonName
+                );
+            };
+        }
+
 
     },
     // Update DOM on a Received Event

@@ -14,13 +14,15 @@ Storage = {
             return false;
         }
     },
+    /* === Storage Login === */
     saveLogin: function(){
-        console.log('Saving login to Storage')
+        console.log('Saving Login to Storage');
         var userStr = window.JSON.stringify(login.user);
         console.log(userStr);
         Storage.storage.setItem("user", userStr);
     },
     retrieveLogin: function (){
+        console.log('Retrieving Login from Storage');
         var userStr = Storage.storage.getItem("user");
         console.log(userStr);
         return window.JSON.parse( userStr );
@@ -37,5 +39,18 @@ Storage = {
     },
     resetUser: function(){
         Storage.storage.removeItem("user");
+    },
+    /* === Storage User Content === */
+    saveUserContent: function(){
+        console.log('Saving User Content to Storage');
+        var userContentStr = window.JSON.stringify(UserContent);
+        console.log(userContentStr);
+        Storage.storage.setItem("userContent-"+login.user.id, userContentStr);
+    },
+    retrieveUserContent: function (){
+        console.log('Retrieving User Content from Storage');
+        var userContentStr = Storage.storage.getItem("userContent-"+login.user.id);
+        console.log(userContentStr);
+        return window.JSON.parse(userContentStr);
     }
 }
