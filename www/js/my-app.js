@@ -81,7 +81,6 @@ myApp.onPageInit('movie', function (page) {
 
     document.getElementById("add").addEventListener("click", function(){
         UserContent.addMovie(Movie.movie);
-        Storage.saveUserContent();
     });
 
 });

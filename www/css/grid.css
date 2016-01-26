@@ -20,6 +20,7 @@
     color: #ffffff;
     background-color: #999999;
     background-size: 100%;
+    background-position: center;
 }
 .box span {
 /*    vertical-align:bottom; */

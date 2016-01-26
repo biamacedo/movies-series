@@ -7,11 +7,11 @@ Main = {
     totalStories: 0,
 
     loadGrids: function(){
-        Main.totalStories = UserContent.movies.length
+        Main.totalStories = UserContent.content.movies.length
 
-        Main.loadFeature(Main.movieTab, UserContent.movies);
-        Main.loadMain(Main.movieTab, UserContent.movies);
-        Main.loadSub(Main.movieTab, UserContent.movies);
+        Main.loadFeature(Main.movieTab, UserContent.content.movies);
+        Main.loadMain(Main.movieTab, UserContent.content.movies);
+        Main.loadSub(Main.movieTab, UserContent.content.movies);
 
     },
     loadFeature: function(tab, list){
@@ -23,7 +23,7 @@ Main = {
                                     </div>\
                                     <div class="gutters">\
                                         <a href="pages/' + list[0].Type + '.html?id=' + list[0].imdbID + '">\
-                                            <div class="box" style="background-image: url("' + list[0].Poster + '");">\
+                                            <div class="box" style="background-image: url(' + list[0].Poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[0].Title + '</div>\
                                                     ' + list[0].Year + '\
@@ -47,7 +47,7 @@ Main = {
                                     </div>\
                                     <div class="gutters">\
                                         <a href="pages/' + list[0].Type + '.html?id=' + list[0].imdbID + '">\
-                                            <div class="box" style="background-image: url("' + list[0].Poster + '");">\
+                                            <div class="box" style="background-image: url(' + list[0].Poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[0].Title + '</div>\
                                                     ' + list[0].Year + '\
@@ -70,7 +70,7 @@ Main = {
                                     </div>\
                                     <div class="gutters">\
                                         <a href="pages/' + list[0].Type + '.html?id=' + list[0].imdbID + '">\
-                                            <div class="box" style="background-image: url("' + list[0].Poster + '");">\
+                                            <div class="box" style="background-image: url(' + list[0].Poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[0].Title + '</div>\
                                                     ' + list[0].Year + '\
