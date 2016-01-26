@@ -34,6 +34,16 @@ myApp.onPageInit('login', function (page) {
 myApp.onPageInit('index', function (page) {
     console.log('Main Page Init');
 
+    var tempUserContent = Storage.retrieveUserContent();
+    console.log(tempUserContent);
+
+    if (tempUserContent !== undefined &&
+        tempUserContent !== null){
+            console.log('Content Found');
+            UserContent = tempUserContent;
+    }
+
+
     // Logoff button
     document.getElementById("logout").addEventListener("click", function(){
         // Logoff code
