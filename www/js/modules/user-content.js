@@ -1,14 +1,19 @@
+// =====================================================================
+//  user-content.js
+//  Contains code related user saved content
+// =====================================================================
 
 UserContent = {
-    movies: [],
-    series: [],
-
+    content: {
+        movies: [],
+        series: []
+    },
     addMovie: function(movie){
-        UserContent.movies.push(movie);
+        UserContent.content.movies.push(movie);
     },
 
     addSerie: function(serie){
-        UserContent.series.push(serie);
+        UserContent.content.series.push(serie);
     }
 
 }

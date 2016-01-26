@@ -43,7 +43,7 @@ Storage = {
     /* === Storage User Content === */
     saveUserContent: function(){
         console.log('Saving User Content to Storage');
-        var userContentStr = window.JSON.stringify(UserContent);
+        var userContentStr = window.JSON.stringify(UserContent.content);
         console.log(userContentStr);
         Storage.storage.setItem("userContent-"+login.user.id, userContentStr);
     },

@@ -34,14 +34,17 @@ myApp.onPageInit('login', function (page) {
 myApp.onPageInit('index', function (page) {
     console.log('Main Page Init');
 
+    // If saved, retrieving previous user-content and loding it to grid
     var tempUserContent = Storage.retrieveUserContent();
     console.log(tempUserContent);
 
     if (tempUserContent !== undefined &&
         tempUserContent !== null){
             console.log('Content Found');
-            UserContent = tempUserContent;
+            UserContent.content = tempUserContent;
     }
+
+    Main.loadGrids();
 
 
     // Logoff button
