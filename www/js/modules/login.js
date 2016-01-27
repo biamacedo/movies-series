@@ -7,7 +7,8 @@ login = {
     user: {
         id: undefined,
         name: undefined,
-        photoUrl: undefined
+        photoUrl: undefined,
+        isLoggedIn: false
     },
 
     init: function(){
@@ -30,7 +31,9 @@ login = {
             console.log(response);
             if(response.status === 'connected') {
                console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+               login.isLoggedIn = true;
                getUserDetails();
+               Main.refreshPage();
            } else {
                alert('Facebook login failed: ' + response.error);
            }
@@ -44,6 +47,7 @@ login = {
         Storage.resetUser();
 
         openFB.logout(function() {
+            login.isLoggedIn = false;
             console.log('Logout successful');
         }, function(error){
             console.log('Error: ' + error.message);
@@ -64,14 +68,14 @@ function getUserDetails() {
         login.user.name = data.name;
         login.user.photoUrl = 'http://graph.facebook.com/v2.5/' + data.id + '/picture?width=100&height=100';
 
-        loginFinish();
-
         console.log(login.user);
 
         if (Storage.check()){
             Storage.saveLogin();
         }
+
         login.loadUser();
+        loginFinish();
     }, error: function(error){
         console.log('Error: ' + error.message);
     }});

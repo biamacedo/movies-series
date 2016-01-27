@@ -23,6 +23,12 @@ Search = {
 
         $.each(list, function(i, item) {
             console.log(item);
+
+            var poster = "img/default-poster.png";
+            if (item.Poster !== "N/A"){
+                poster = item.Poster;
+            }
+
             var newItem = ' <li>\
                                 <a href="pages/' + item.Type + '.html?id=' + item.imdbID + '" class="item-link item-content">\
                                     <div class="item-media"><img src="' + item.Poster + '" width="80"></div>\

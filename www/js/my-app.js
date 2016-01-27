@@ -19,14 +19,9 @@ myApp.onPageInit('login', function (page) {
     console.log('Login Page Init');
     checkLoginSavedStorage();
 
-    // Logoff button
+    // Login button
     document.getElementById("login").addEventListener("click", function(){
-        // Logoff code
         login.loginUser();
-
-        // If successiful
-        //myApp.loginScreen();
-        //changePage('#login', 'slideup');
     });
 
 });
@@ -34,18 +29,9 @@ myApp.onPageInit('login', function (page) {
 myApp.onPageInit('index', function (page) {
     console.log('Main Page Init');
 
-    // If saved, retrieving previous user-content and loding it to grid
-    var tempUserContent = Storage.retrieveUserContent();
-    console.log(tempUserContent);
-
-    if (tempUserContent !== undefined &&
-        tempUserContent !== null){
-            console.log('Content Found');
-            UserContent.content = tempUserContent;
+    if (login.isLoggedIn){
+        Main.refreshPage();
     }
-
-    Main.loadGrids();
-
 
     // Logoff button
     document.getElementById("logout").addEventListener("click", function(){
@@ -54,7 +40,6 @@ myApp.onPageInit('index', function (page) {
 
         // If successiful
         myApp.loginScreen();
-        //changePage('#login', 'slideup');
     });
 
 });
@@ -77,12 +62,19 @@ myApp.onPageInit('movie', function (page) {
 
     var id = page.query.id;
     console.log(id);
-    Movie.getMovie(id);
+    Movie.loadMovie(id);
 
-    document.getElementById("add").addEventListener("click", function(){
-        UserContent.addMovie(Movie.movie);
-    });
+});
 
+myApp.onPageInit('serie', function (page) {
+    console.log('Serie Page Init');
+
+    console.log(page.query);
+
+    var id = page.query.id;
+    console.log(id);
+    Serie.loadSerie(id);
+    
 });
 
 //And now we initialize app
@@ -97,13 +89,33 @@ function checkLoginSavedStorage(){
     if (Storage.check() && Storage.checkSavedLogin()){
         console.log('Login Saved');
         login.user = Storage.retrieveLogin();
-		    login.loadUser();
+        // If saved, retrieving previous user-content and loding it
+        var tempUserContent = Storage.retrieveUserContent();
+        console.log(tempUserContent);
 
-        myApp.closeModal('.login-screen');
-        //changePage('#main', 'slidedown');
+        if (tempUserContent !== undefined &&
+            tempUserContent !== null){
+                console.log('Content Found');
+                UserContent.content = tempUserContent;
+                login.isLoggedIn = true;
+        }
+
+		login.loadUser();
+
+
+        loginFinish();
     }
 };
 
 function loginFinish(){
     myApp.closeModal('.login-screen');
+}
+
+function dialog(message, title){
+    navigator.notification.alert(
+        message,    // message
+        null,       // callback
+        title, // title
+        'OK'        // buttonName
+    );
 }

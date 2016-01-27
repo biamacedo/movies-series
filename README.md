@@ -1,11 +1,39 @@
-# Projeto Final - Módulo 1 / Bloco Multiplataforma
-###### Infnet Pós Graduação
+# Movies & Series App
+###### Projeto Final - Módulo 1 / Bloco Multiplataforma | Infnet Pós Graduação
 
-## Frameworks
+Movies & Series is a social mobile app
+
+## Frameworks & Libraries
 
 * [Apache Cordova](https://cordova.apache.org/)
-* [JQuery Mobile](http://jquerymobile.com/) + [JQuery](https://jquery.com/)
-* [Fasclick](https://github.com/ftlabs/fastclick)
+* [JQuery](https://jquery.com/)
+* [Fastclick](https://github.com/ftlabs/fastclick)
+* [Framework7](http://www.idangero.us/framework7/) for UI (Android and iOS)
+* [OMDB API](http://www.omdbapi.com/) for movies and series content
+* [OpenFB](https://github.com/ccoenraets/OpenFB) for Facebook integration
+* [Font Awesome](http://fortawesome.github.io/Font-Awesome/) for icons
+
+* [Parse](https://www.parse.com/) as backend for social part
+
+## Device Sensors/Functionalities Used
+
+* Local Storage
+* Camera
+
+## Plugins Used
+
+* [cordova-plugin-whitelist](https://github.com/apache/cordova-plugin-whitelist)
+* [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
+* [cordova-plugin-dialogs](https://github.com/apache/cordova-plugin-dialogs)
+
+> To add plugins use the following command on terminal:
+> ```
+> cordova plugin add <plugin-name>
+> ```
+> To list plugins installed use the following command on terminal:
+> ```
+> cordova plugin list
+> ```
 
 ## Pre-Requisites
 
