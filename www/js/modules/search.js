@@ -2,17 +2,21 @@ Search = {
     searchForMovie: function(movieName) {
         var movies = [];
 
+        showLoading();
         imdb.search(movieName).done(function(data){
             if (data.Response !== undefined && data.Response === 'False'){
+                hideLoading();
                 Search.loadError(data.Error);
             } else {
-                console.log(data);
+                // console.log(data);
                 movies = data.Search;
 
                 Search.showResults(movies);
+                hideLoading();
             }
         })
         .fail(function(error){
+            hideLoading();
             console.log(error);
             Search.loadError(error);
         });
@@ -31,7 +35,7 @@ Search = {
 
             var newItem = ' <li>\
                                 <a href="pages/' + item.Type + '.html?id=' + item.imdbID + '" class="item-link item-content">\
-                                    <div class="item-media"><img src="' + item.Poster + '" width="80"></div>\
+                                    <div class="item-media"><img src="' + poster + '" width="80"></div>\
                                     <div class="item-inner">\
                                         <div class="item-title-row">\
                                             <div class="item-title">' + item.Title + '</div>\

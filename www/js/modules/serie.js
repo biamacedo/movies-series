@@ -7,8 +7,10 @@
 Serie = {
     serie: undefined,
     loadSerie: function(id){
+        showLoading();
         imdb.getById(id).done(function(data){
             if (data.Response !== undefined && data.Response === 'False'){
+                hideLoading();
                 Serie.loadError(data.Error);
             } else {
                 console.log(data);
@@ -17,9 +19,11 @@ Serie = {
                 Serie.loadSerieToPage(Serie.serie);
 
                 Serie.loadActionButton();
+                hideLoading();
             }
         })
         .fail(function(error){
+            hideLoading();
             console.log(error);
             Serie.loadError(error.Error);
         });

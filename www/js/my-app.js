@@ -62,7 +62,9 @@ myApp.onPageInit('movie', function (page) {
 
     var id = page.query.id;
     console.log(id);
-    Movie.loadMovie(id);
+    var saved = page.query.saved;
+    console.log(saved);
+    Movie.loadMovie(id, saved);
 
 });
 
@@ -73,12 +75,17 @@ myApp.onPageInit('serie', function (page) {
 
     var id = page.query.id;
     console.log(id);
-    Serie.loadSerie(id);
-    
+    var saved = page.query.saved;
+    console.log(saved);
+    Serie.loadSerie(id, saved);
+
 });
 
 //And now we initialize app
 myApp.init();
+
+
+// Function that can be used anywhere on app
 
 function checkLoginSavedStorage(){
 
@@ -118,4 +125,12 @@ function dialog(message, title){
         title, // title
         'OK'        // buttonName
     );
+}
+
+function showLoading(){
+    myApp.showIndicator();
+}
+
+function hideLoading(){
+    myApp.hideIndicator();
 }

@@ -7,6 +7,7 @@ Main = {
     totalStories: 0,
 
     refreshPage: function(){
+        showLoading();
         Main.totalStories = UserContent.content.movies.length
         console.log('Total movies: ' + Main.totalStories);
 
@@ -21,7 +22,7 @@ Main = {
         Main.loadFeature(Main.seriesTab, UserContent.content.series);
         Main.loadMain(Main.seriesTab, UserContent.content.series);
         Main.loadSub(Main.seriesTab, UserContent.content.series);
-
+        hideLoading();
     },
     loadFeature: function(tab, list){
         $(tab + ' #main').html("");
@@ -38,7 +39,7 @@ Main = {
                                     <div class="aspect ratio-feature">\
                                     </div>\
                                     <div class="gutters">\
-                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '">\
+                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '&saved=true">\
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\
@@ -69,7 +70,7 @@ Main = {
                                     <div class="aspect ratio-square">\
                                     </div>\
                                     <div class="gutters">\
-                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '">\
+                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '&saved=true">\
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\
@@ -99,7 +100,7 @@ Main = {
                                     <div class="aspect ratio-square">\
                                     </div>\
                                     <div class="gutters">\
-                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '">\
+                                        <a class="clickable" href="pages/' + list[Main.index].Type + '.html?id=' + list[Main.index].imdbID + '&saved=true">\
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\

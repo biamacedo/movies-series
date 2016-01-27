@@ -19,8 +19,14 @@ UserContent = {
         }
     },
     removeMovie: function(movie){
-        if ($.inArray(movie, UserContent.content.movies) !== -1){
-            UserContent.content.movies.splice($.inArray(movie, UserContent.content.movies),1);
+        var findElement = _.find(UserContent.content.movies, function(item){ return item.imdbID === movie.imdbID; });
+        console.log(findElement);
+        if (findElement !== undefined){
+            console.log('Element Found: ' + window.JSON.stringify(findElement));
+            // Delete element from array
+            var moviesFiltered = _.filter(UserContent.content.movies, function(item){ return item.imdbID !== movie.imdbID; });
+            console.log('Element Deleted: ' + window.JSON.stringify(moviesFiltered));
+            UserContent.content.movies = moviesFiltered;
             Storage.saveUserContent();
             dialog("Movie Deleted!", "Success");
         } else {
@@ -38,8 +44,14 @@ UserContent = {
         }
     },
     removeSerie: function(serie){
-        if ($.inArray(serie, UserContent.content.series) !== -1){
-            UserContent.content.series.splice($.inArray(movie, UserContent.content.series),1);
+        var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === serie.imdbID; });
+        console.log(findElement);
+        if (findElement !== undefined){
+            console.log('Element Found: ' + window.JSON.stringify(findElement));
+            // Delete element from array
+            var seriesFiltered = _.filter(UserContent.content.series, function(item){ return item.imdbID !== serie.imdbID; });
+            console.log('Element Deleted: ' + window.JSON.stringify(seriesFiltered));
+            UserContent.content.series = seriesFiltered;
             Storage.saveUserContent();
             dialog("Serie Deleted!", "Success");
         } else {

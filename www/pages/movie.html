@@ -3,7 +3,7 @@
 
         <div class="pages">
             <!-- That is all we have in about.html file -->
-            <div data-page="movie" class="page navbar-fixed">
+            <div data-page="movie" class="page navbar-fixed toolbar-fixed">
 
                 <!-- Top Navbar-->
                 <div class="navbar">
@@ -44,6 +44,58 @@
                             <p>IMDB Rating: <span id="imdbRating"></p>
                         </div>
                     </div>
+
+                    <div class="content-block-title">Comments</div>
+                    <div class="list-block cards-list">
+                        <ul id="commentList">
+                            <li class="card facebook-card">
+                                <div class="card-header">
+                                    <div class="facebook-avatar"><img src="http://graph.facebook.com/v2.5/1239672379379876/picture?width=100&height=100"></div>
+                                    <div class="facebook-name">Beatriz Macedo</div>
+                                    <div class="facebook-date">Monday at 2:15 PM</div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-inner">
+                                        <p>This movie sucks!!!</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card facebook-card">
+                                <div class="card-header">
+                                    <div class="facebook-avatar"><img src="http://graph.facebook.com/v2.5/1239672379379876/picture?width=100&height=100"></div>
+                                    <div class="facebook-name">Beatriz Macedo</div>
+                                    <div class="facebook-date">Monday at 2:15 PM</div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-inner">
+                                        <p id="commentText">This movie sucks!!!</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="content-block-title">New Comment</div> -->
+                    <div class="list-block cards-list">
+                        <ul>
+                            <li class="card facebook-card">
+                                <div class="card-header">
+                                    <div class="facebook-avatar"><img src="http://graph.facebook.com/v2.5/1239672379379876/picture?width=100&height=100"></div>
+                                    <div class="facebook-name">Beatriz Macedo</div>
+                                    <div class="facebook-date">Monday at 2:15 PM</div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-inner">
+                                        <input type="text" name="newComment" placeholder="Type your comment here">
+                                    </div>
+                                </div>
+                                <div class="card-footer no-border">
+                                    <a href="#" id="addPhoto"><i class="fa fa-camera"></i></a>
+                                    <a href="#" id="sendComment"><i class="fa fa-paper-plane"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
