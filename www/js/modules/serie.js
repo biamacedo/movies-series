@@ -54,16 +54,30 @@ Serie = {
         var result = $.grep(UserContent.content.series, function(e){ return e.id == Serie.id; });
         if (result.length == 0) {
             // not found
-            $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
-            $('#add').click(function() {
-                UserContent.addSerie(Serie.serie);
-            });
+            Serie.loadActionAdd();
         } else {
             // found one or more items, removing only the first
-            $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
-            $('#remove').click(function() {
-                UserContent.removeSerie(result[0]);
-            });
+            Serie.loadActionRemove(result);
         }
+    },
+
+    loadActionAdd: function(){
+        $('#action-button').html('');
+
+        $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
+        $('#add').click(function() {
+            UserContent.addSerie(Serie.serie);
+            Serie.loadActionRemove();
+        });
+    },
+
+    loadActionRemove: function(result){
+        $('#action-button').html('');
+
+        $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
+        $('#remove').click(function() {
+            UserContent.removeSerie(result[0]);
+            Serie.loadActionAdd();
+        });
     }
 }

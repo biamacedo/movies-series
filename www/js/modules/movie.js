@@ -54,16 +54,30 @@ Movie = {
         var result = $.grep(UserContent.content.movies, function(e){ return e.id == Movie.id; });
         if (result.length == 0) {
             // not found
-            $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
-            $('#add').click(function() {
-                UserContent.addMovie(Movie.movie);
-            });
+            Movie.loadActionAdd();
         } else {
             // found one or more items, removing only the first
-            $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
-            $('#remove').click(function() {
-                UserContent.removeMovie(result[0]);
-            });
+            Movie.loadActionRemove(result);
         }
+    },
+
+    loadActionAdd: function(){
+        $('#action-button').html('');
+
+        $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
+        $('#add').click(function() {
+            UserContent.addMovie(Movie.movie);
+            Movie.loadActionRemove();
+        });
+    },
+
+    loadActionRemove: function(result){
+        $('#action-button').html('');
+
+        $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
+        $('#remove').click(function() {
+            UserContent.removeMovie(result[0]);
+            Movie.loadActionAdd();
+        });
     }
 }
