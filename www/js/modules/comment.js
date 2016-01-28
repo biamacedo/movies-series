@@ -108,13 +108,14 @@ CommentFunctions = {
         var commentText = $("#inputCommentText").val();
         if (commentText === "" && commentImages.length === 0) {
             dialog("Please type a comment or add an image before sending!", "Missing comment or image");
+            hideLoading();
         } else {
             Social.insertNewComment(itemImdbID, commentText, login.user, commentImages).then(function(newComment){
                 // Execute any logic that should take place after the object is saved.
                 console.log('New comment created with comment id: ' + newComment.id);
                 $("#inputCommentText").val("");
                 hideLoading();
-                dialog('Sent Comment Successfully!', "New Comment");
+                Toast.showLongCenter('Sent Comment Successfully!');
                 CommentFunctions.loadComments(itemImdbID);
             }, function(newComment, error) {
                 // Execute any logic that should take place if the save fails.

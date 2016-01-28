@@ -9,13 +9,17 @@ Social = {
         Parse.initialize("X6l2ixpKLX6b59az15l4a4I2sFekkE5i5lsfMvLy", "CMuR8PqfzpfBArd6IgotkR4A70bpXbyXAiirpwdd");
     },
     retrieveComments: function(id){
+        showLoading();
         var Comment = Parse.Object.extend("Comment");
         var query = new Parse.Query(Comment);
         query.equalTo("commentItemId", id);
         query.descending("createdAt");
+
+        hideLoading();
         return query.find();
     },
     insertNewComment(commentItemId, commentText, user, commentImages){
+        showLoading();
         var commentUserId = user.id;
         var commentUserName = user.name;
         var commentUserImg = user.photoUrl;
@@ -35,7 +39,7 @@ Social = {
             newComment.set("commentImages", imageFile);
         });
 
-
+        hideLoading();
         return newComment.save();
     }
 }
