@@ -47,8 +47,8 @@ myApp.onPageInit('index', function (page) {
 myApp.onPageInit('search', function (page) {
     console.log('Search Page Init');
 
-    // Search Button
-    document.getElementById("searchGo").addEventListener("click", function(){
+    // Search Keyboard Enter
+    $("#searchForm").submit(function(){
         var inputSearch = $("#searchInput").val();
         Search.searchForMovie(inputSearch);
     });
