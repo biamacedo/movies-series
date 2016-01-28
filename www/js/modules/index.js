@@ -43,7 +43,7 @@ Main = {
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\
-                                                    ' + list[Main.index].Year + '\
+                                                    <div class="color-gray">' + list[Main.index].Year + '</div>\
                                                 </span>\
                                             </div>\
                                         </a>\
@@ -74,7 +74,7 @@ Main = {
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\
-                                                    ' + list[Main.index].Year + '\
+                                                    <div class="color-gray">' + list[Main.index].Year + '</div>\
                                                 </span>\
                                             </div>\
                                         </a>\
@@ -104,7 +104,7 @@ Main = {
                                             <div class="box" style="background-image: url(' + poster + ');">\
                                                 <span class="text-box">\
                                                     <div class="title">' + list[Main.index].Title + '</div>\
-                                                    ' + list[Main.index].Year + '\
+                                                    <div class="color-gray">' + list[Main.index].Year + '</div>\
                                                 </span>\
                                             </div>\
                                         </a>\
