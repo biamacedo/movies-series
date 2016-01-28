@@ -63,7 +63,7 @@ Movie = {
         $('#genre').text(movie.Genre);
         $('#director').text(movie.Director);
         $('#plot').text(movie.Plot);
-        $('#writers').text(movie.Writers);
+        if(movie.Writers !== "") {$('#writers').text(movie.Writers);}
         $('#actors').text(movie.Actors);
         $('#awards').text(movie.Awards);
         $('#metascore').text(movie.Metascore);
@@ -185,5 +185,12 @@ Movie = {
                 alert('Failed to send comment, with error code: ' + error.message);
             });
         }
+    },
+
+    addPhoto: function(){
+
+        var imgBase64 = null;
+
+        var newImg = '<img src="' + imgBase64 + '" width="100%">'
     }
 }

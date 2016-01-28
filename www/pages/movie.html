@@ -3,7 +3,7 @@
 
         <div class="pages">
             <!-- That is all we have in about.html file -->
-            <div data-page="movie" class="page navbar-fixed toolbar-fixed">
+            <div data-page="movie" class="page navbar-fixed">
 
                 <!-- Top Navbar-->
                 <div class="navbar">
@@ -53,20 +53,22 @@
                     <!-- <div class="content-block-title">New Comment</div> -->
                     <div class="list-block cards-list">
                         <ul>
-                            <li class="card facebook-card">
+                            <li class="card facebook-card send-comment-card">
                                 <div class="card-header">
                                     <div class="facebook-avatar"><img id="newCommentUserImg" src="img/default-user.png" /></div>
                                     <div class="facebook-name" id="newCommentUserName"></div>
                                     <div class="facebook-date">Now</div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="card-content-inner">
-                                        <input type="text" id="inputCommentText" name="inputCommentText" placeholder="Type your comment here">
+                                    <div id="commentCard" class="card-content-inner">
+                                        <form id="commentForm">
+                                            <input type="text" id="inputCommentText" name="inputCommentText" placeholder="Type your comment here">
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="card-footer no-border">
-                                    <a href="#" id="addPhoto"><i class="fa fa-camera"></i></a>
-                                    <a href="#" id="sendComment"><i class="fa fa-paper-plane"></i></a>
+                                    <a href="#" class="link" id="addPhoto"><i class="fa fa-camera"></i></a>
+                                    <a href="#" class="link" id="sendComment"><i class="fa fa-paper-plane"></i></a>
                                 </div>
                             </li>
                         </ul>

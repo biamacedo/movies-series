@@ -9,7 +9,7 @@ var myApp = new Framework7({
 var $$ = Dom7;
 
 // Add view
-var mainView = myApp.addView('.view-main', {
+mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
@@ -58,8 +58,17 @@ myApp.onPageInit('search', function (page) {
 myApp.onPageInit('movie', function (page) {
     console.log('Movie Page Init');
 
+    $("#commentForm").submit(function(){
+        Movie.sendComment();
+    });
+
     $("#sendComment").click(function(){
         Movie.sendComment();
+    });
+
+
+    $("#addPhoto").click(function(){
+
     });
 
     console.log(page.query);
@@ -136,4 +145,36 @@ function showLoading(){
 
 function hideLoading(){
     myApp.hideIndicator();
+}
+
+// Device Back Button Problem //
+function appReady(){
+    console.log('Adding Back Button Event');
+    document.addEventListener("backbutton", function(e){
+        var page = myApp.getCurrentView().activePage;
+        console.log(page);
+        myApp.hidePreloader();
+        if(page.name=="index"){
+            console.log('At Index');
+            e.preventDefault();
+
+            navigator.notification.confirm(
+                'Do you want to exit?!', // message
+                function(buttonIndex) { // callback to invoke with index of button pressed
+                     alert('You selected button ' + buttonIndex);
+                     if(buttonIndex === 1){
+                         console.log('Exit confirmed');
+                         navigator.app.clearHistory();
+                         navigator.app.exitApp();
+                     }
+                },
+                'Exit',           // title
+                ['Exit','Back']     // buttonLabels
+            );
+        } else {
+            console.log('Not At Index');
+            console.log(navigator.app);
+            mainView.router.back();
+        }
+    }, false);
 }

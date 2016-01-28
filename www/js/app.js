@@ -26,6 +26,8 @@ var app = {
         }
 
         Social.connectToParse();
+
+        appReady();
     }
 };
 

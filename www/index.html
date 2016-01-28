@@ -17,80 +17,76 @@
     <!-- Font Awesome Icons-->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Modules styles-->
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/display-item.css">
   </head>
   <body>
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-cover">
-        <div class="content-block">
-            <div id="central-wrapper">
-                <img id="profile-image" class="circular" />
-                <p><span id="username"></span></p>
-            </div>
 
-            <div class="content-block-title">Menu</div>
-            <div class="list-block">
-                <ul>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-inner">
-                      <div class="item-title">Movies</div>
-                      <div class="item-after"><span class="badge">1</span></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-inner">
-                      <div class="item-title">Series</div>
-                      <!-- <div class="item-after"><span class="badge">5</span></div> -->
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-inner">
-                      <div class="item-title">Social</div>
-                      <div class="item-after"><span class="badge">5</span></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a id="logout" class="item-link item-content close-panel">
-                    <div class="item-inner">
-                      <div class="item-title">Log Out</div>
-                    </div>
-                  </a>
-                </li>
-          </div>
-        </div>
-    </div>
     <!-- Views-->
     <div class="views">
-        <div class="login-screen modal-in">
-            <div class="view">
-              <div data-page="login" class="page">
-                <div class="page-content login-screen-content">
-                  <div class="login-screen-title">Movies & Series</div>
 
-                        <div id="central-wrapper">
-                            <p><a id="login" href="#" class="button button-fill color-blue">Login With Facebook</a></p>
+            <div class="login-screen modal-in">
+                <!-- Default view-page layout -->
+                <div class="view">
+                  <div data-page="login" class="page">
+                    <!-- page-content has additional login-screen content -->
+                    <div class="page-content login-screen-content">
+                      <div class="login-screen-title" style="color: #364D9C;">Movies & Series</div>
+                      <!-- Login form -->
+                      <form>
+                        <div class="list-block">
+                          <ul>
+                            <!-- <li class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title label">Username</div>
+                                <div class="item-input">
+                                  <input type="text" name="username" placeholder="Username">
+                                </div>
+                              </div>
+                            </li>
+                            <li class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title label">Password</div>
+                                <div class="item-input">
+                                  <input type="password" name="password" placeholder="Password">
+                                </div>
+                              </div>
+                            </li>
+                            <li class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title label">Login</div>
+                                <div class="item-input">
+                                <a href="#" class="button button-raised button-fill color-blue">Blue</a>
+                                </div>
+                              </div>
+                            </li> -->
+                            <div class="content-block-title">Login Menu</div>
+                            <li class="item-content">
+                              <div class="item-inner">
+                                <div class="item-input">
+                                      <a href="#" id="login" class="button button-raised button-big button-fill color-blue">Login With Facebook</a>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
-                    <div class="list-block-label">
-                      <div id="status"></div>
-                      <p>@Rio de Janeiro, 2015</p>
+                        <div class="list-block">
+                          <ul>
+                            <!-- <li>
+                              <a href="#" class="item-link list-button">Sign In</a>
+                            </li> -->
+                          </ul>
+                          <div class="list-block-label">Please login using your facebook account.</div>
+                        </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
-              </div>
             </div>
-          </div>
 
       <!-- Your main view, should have "view-main" class-->
       <div class="view view-main">
@@ -121,6 +117,55 @@
                         <a href="#tab-2" class="tab-link" data-tab=".tab2">Series</a>
                     </div>
                 </div>
+
+                <!-- Panels overlay-->
+                <div class="panel-overlay"></div>
+                <!-- Left panel with reveal effect-->
+                <div class="panel panel-left panel-cover">
+                    <div class="content-block">
+                        <div id="central-wrapper">
+                            <img id="profile-image" class="circular" />
+                            <p><span id="username"></span></p>
+                        </div>
+
+                        <div class="content-block-title">Menu</div>
+                        <div class="list-block">
+                            <ul>
+                            <li>
+                              <a href="#" class="item-link item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Movies</div>
+                                  <div class="item-after"><span class="badge">1</span></div>
+                                </div>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" class="item-link item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Series</div>
+                                  <!-- <div class="item-after"><span class="badge">5</span></div> -->
+                                </div>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" class="item-link item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Social</div>
+                                  <div class="item-after"><span class="badge">5</span></div>
+                                </div>
+                              </a>
+                            </li>
+                            <li>
+                              <a id="logout" class="item-link item-content close-panel">
+                                <div class="item-inner">
+                                  <div class="item-title">Log Out</div>
+                                </div>
+                              </a>
+                            </li>
+                      </div>
+                    </div>
+                </div>
+
                 <!-- Scrollable page content-->
                 <div class="page-content">
                     <!-- Top Tabs -->
@@ -167,6 +212,7 @@
     <script src="lib/openfb/openfb.js"></script>
     <script src="lib/underscore/underscore-min.js"></script>
     <script src="lib/moment/moment.js"></script>
+    <script src="lib/q/q.js"></script>
     <!-- Modules -->
     <script type="text/javascript" src="js/modules/login.js"></script>
     <script type="text/javascript" src="js/modules/index.js"></script>
@@ -177,6 +223,7 @@
     <script type="text/javascript" src="js/modules/serie.js"></script>
     <script type="text/javascript" src="js/modules/user-content.js"></script>
     <script type="text/javascript" src="js/modules/social.js"></script>
+    <script type="text/javascript" src="js/modules/camera.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
     <!-- Parse API -->
