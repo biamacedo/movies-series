@@ -25,7 +25,7 @@ var app = {
             };
         }
 
-
+        Social.connectToParse();
     }
 };
 

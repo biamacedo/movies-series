@@ -6,7 +6,7 @@ Search = {
         imdb.search(movieName).done(function(data){
             if (data.Response !== undefined && data.Response === 'False'){
                 hideLoading();
-                Search.loadError(data.Error);
+                showMessageResults(data.Error);
             } else {
                 // console.log(data);
                 movies = data.Search;
@@ -49,6 +49,20 @@ Search = {
 
             $("#searchList").append(newItem);
         });
+    },
+
+    showMessageResults: function(){
+        $("#searchList").html("");
+
+        var errorMessage = '  <li class="card">\
+                                <div class="card-content">\
+                                    <div class="card-content-inner">\
+                                        <p>Could not load comments because of error: ' + error.message + '</p>\
+                                    </div>\
+                                </div>\
+                            </li>'
+
+        $("#searchList").append(errorMessage);
     },
 
     loadError: function(errorMessage){

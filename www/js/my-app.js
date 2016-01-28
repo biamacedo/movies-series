@@ -58,6 +58,10 @@ myApp.onPageInit('search', function (page) {
 myApp.onPageInit('movie', function (page) {
     console.log('Movie Page Init');
 
+    $("#sendComment").click(function(){
+        Movie.sendComment();
+    });
+
     console.log(page.query);
 
     var id = page.query.id;
@@ -108,7 +112,6 @@ function checkLoginSavedStorage(){
         }
 
 		login.loadUser();
-
 
         loginFinish();
     }

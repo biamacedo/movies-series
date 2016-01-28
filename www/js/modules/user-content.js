@@ -10,7 +10,9 @@ UserContent = {
     },
     /* Movie Functions */
     addMovie: function(movie){
-        if ($.inArray(movie, UserContent.content.movies) === -1){
+        var findElement = _.find(UserContent.content.movies, function(item){ return item.imdbID === movie.imdbID; });
+        console.log(findElement);
+        if (findElement === undefined){
             UserContent.content.movies.push(movie);
             Storage.saveUserContent();
             dialog("Movie Added!", "Success");
@@ -35,7 +37,9 @@ UserContent = {
     },
     /* Serie Functions */
     addSerie: function(serie){
-        if ($.inArray(serie, UserContent.content.series) === -1){
+        var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === serie.imdbID; });
+        console.log(findElement);
+        if (findElement === undefined){
             UserContent.content.series.push(serie);
             Storage.saveUserContent();
             dialog("Serie Added!", "Success");

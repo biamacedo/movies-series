@@ -38,6 +38,12 @@ Movie = {
             Movie.movie = findElement;
 
             Movie.loadMovieToPage(Movie.movie);
+            Movie.loadComments();
+
+            // Load User Info to New Comment card
+            $("#newCommentUserName").text(login.user.name);
+            $("#newCommentUserImg").attr('src', login.user.photoUrl);
+
             Movie.loadActionButton();
             hideLoading();
         }
@@ -95,24 +101,89 @@ Movie = {
             UserContent.removeMovie(item);
             Movie.loadActionAdd();
         });
-    }//,
+    },
 
-    // loadComments: function(){
-    //     moment =
-    //
-    //     var commentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-    //
-    //     var newComment = '  <li class="card facebook-card">\
-    //                             <div class="card-header">\
-    //                                 <div class="facebook-avatar"><img src="http://graph.facebook.com/v2.5/1239672379379876/picture?width=100&height=100"></div>\
-    //                                 <div class="facebook-name">' + user.name + '</div>\
-    //                                 <div class="facebook-date">' + commentDate + '</div>\
-    //                             </div>\
-    //                             <div class="card-content">\
-    //                                 <div class="card-content-inner">\
-    //                                     <p id="commentText">This movie sucks!!!</p>\\
-    //                                 </div>\
-    //                             </div>\
-    //                         </li>'
-    // }
+    loadComments: function(){
+        Social.retrieveComments(Movie.movie.imdbID).then(function(results) {
+            console.log("Successfully retrieved " + results.length + " comments.");
+
+            $("#commentList").html("");
+
+            if (results.length <= 0){
+                var message = '  <li class="card">\
+                                        <div class="card-content">\
+                                            <div class="card-content-inner">\
+                                                <p>No comments yet. Be the first to comment!</p>\
+                                            </div>\
+                                        </div>\
+                                    </li>'
+
+                $("#commentList").html(message);
+            } else {
+                $.each(results, function(i, object) {
+                    console.log(object);
+
+                    var commentCreatedAt = object.get('createdAt');
+
+                    var A_WEEK_OLD = moment().clone().subtract(7, 'days').startOf('day');
+
+                    var isWithinAWeek = moment(commentCreatedAt).isAfter(A_WEEK_OLD);
+                    if(isWithinAWeek){
+                        var commentCreatedAtStr = moment(commentCreatedAt).fromNow();
+                    } else {
+                        var commentCreatedAtStr = moment(commentCreatedAt).format('MMMM Do YYYY | HH:mm:ss');
+                    }
+
+                    var newComment = '  <li class="card facebook-card">\
+                                            <div class="card-header">\
+                                                <div class="facebook-avatar"><img src="' + object.get('commentUserImg') + '"></div>\
+                                                <div class="facebook-name">' + object.get('commentUserName') + '</div>\
+                                                <div class="facebook-date">' + commentCreatedAtStr + '</div>\
+                                            </div>\
+                                            <div class="card-content">\
+                                                <div class="card-content-inner">\
+                                                    <p>' + object.get('commentText') + '</p>\
+                                                </div>\
+                                            </div>\
+                                        </li>'
+
+                    $("#commentList").append(newComment);
+                });
+            }
+        }, function(error){
+            console.log(error);
+
+            var errorMessage = '  <li class="card">\
+                                    <div class="card-content">\
+                                        <div class="card-content-inner">\
+                                            <p>Could not load comments because of error: ' + error.message + '</p>\
+                                        </div>\
+                                    </div>\
+                                </li>'
+
+            $("#commentList").html(errorMessage);
+        });
+
+    },
+    sendComment: function(){
+        showLoading();
+        var commentText = $("#inputCommentText").val();
+        if (commentText === "") {
+            dialog("Please type a comment before sending!", "Missing comment");
+        } else {
+            Social.insertNewComment(Movie.movie.imdbID, commentText, login.user).then(function(newComment){
+                // Execute any logic that should take place after the object is saved.
+                console.log('New comment created with comment id: ' + newComment.id);
+                $("#commentText").text("");
+                hideLoading();
+                dialog('Sent Comment Successfully!', "New Comment");
+                Movie.loadComments();
+            }, function(gameScore, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                hideLoading();
+                alert('Failed to send comment, with error code: ' + error.message);
+            });
+        }
+    }
 }
