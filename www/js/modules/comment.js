@@ -75,8 +75,8 @@ CommentFunctions = {
                     console.log(newComment);
 
                     $("#commentList").append(newComment);
-                    hideLoading();
                 });
+                hideLoading();
             }
         }, function(error){
             console.log(error);

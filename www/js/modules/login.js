@@ -17,10 +17,12 @@ login = {
         openFB.init({appId: '168233603530137'});
 
         //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-        //  openFB.init({appId: '168233603530137', tokenStore: window.localStorage});
+        // openFB.init({appId: '168233603530137', tokenStore: window.localStorage});
     },
 
     loadUser: function(){
+        console.log('Loading User');
+        console.log(login.user);
         $('#username').text(login.user.name);
         $('#profile-image').attr("src",login.user.photoUrl);
     },
@@ -37,57 +39,61 @@ login = {
                Main.refreshPage();
            } else {
                alert('Facebook login failed: ' + response.error);
+               hideLoading();
            }
         }, {scope: 'email,public_profile'});
 
     },
 
     checkLoginUser: function(){
+        showLoading();
         console.log('Check Login User');
-        openFB.getLoginStatus(function(loginStatus){
-            // 'connected' = Logged in / 'unknown' = 'Not Logged In'
-            console.log('Connected to Facebook? ' + loginStatus.status);
-            if(loginStatus.status === 'connected'){
-                console.log('Login Saved');
-                login.isLoggedIn = true;
+        // openFB.getLoginStatus(function(loginStatus){
+        //     // 'connected' = Logged in / 'unknown' = 'Not Logged In'
+        //     console.log('Connected to Facebook? ' + loginStatus.status);
+        //     if(loginStatus.status === 'connected'){
+        //         console.log('Login Saved');
 
-                if (Storage.check() && Storage.checkSavedLogin()){
-                    console.log('Retrieving Login');
-                    login.user = Storage.retrieveLogin();
+        if (Storage.check() && Storage.checkSavedLogin()){
+            console.log('Retrieving Login');
+            login.user = Storage.retrieveLogin();
+            login.isLoggedIn = true;
 
-                    // If saved, retrieving previous user-content and loding it
-                    var tempUserContent = Storage.retrieveUserContent();
-                    console.log('Saved UserContent:' + JSON.stringify(tempUserContent));
+            // If saved, retrieving previous user-content and loding it
+            var tempUserContent = Storage.retrieveUserContent();
+            console.log('Saved UserContent:' + JSON.stringify(tempUserContent));
 
-                    if (tempUserContent !== undefined &&
-                        tempUserContent !== null){
-                            console.log('Content Found');
-                            UserContent.content = tempUserContent;
-                    } else {
-                        console.log('Content does not exist, creating one');
-                        UserContent.content = UserContent.resetUserContent();
-                    }
-
-                    login.loadUser();
-
-                    loginFinish();
-                }
+            if (tempUserContent !== undefined &&
+                tempUserContent !== null){
+                    console.log('Content Found');
+                    UserContent.content = tempUserContent;
             } else {
-                console.log('Login Not Saved');
-                login.isLoggedIn = false;
+                console.log('Content does not exist, creating one');
+                UserContent.content = UserContent.resetUserContent();
             }
-        });
+
+            login.loadUser();
+
+            loginFinish();
+        }
+        hideLoading();
+        //     } else {
+        //         console.log('Login Not Saved');
+        //         login.isLoggedIn = false;
+        //         hideLoading();
+        //     }
+        // });
     },
 
     logoffUser: function(){
         console.log('Logoff User!');
-        $('#username').text('');
-        $('#profile-image').attr("src",'');
-        Storage.resetUser();
 
         openFB.logout(function() {
             login.isLoggedIn = false;
             console.log('Logout successful');
+            $('#username').text('');
+            $('#profile-image').attr("src",'');
+            Storage.resetUser();
         }, function(error){
             console.log('Error: ' + error.message);
         });

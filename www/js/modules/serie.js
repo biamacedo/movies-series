@@ -21,6 +21,13 @@ Serie = {
 
                     Serie.loadSerieToPage(Serie.serie);
 
+                    CommentFunctions.loadComments(Serie.serie.imdbID);
+
+                    // Load User Info to New Comment card
+                    $("#newCommentUserName").text(login.user.name);
+                    $("#newCommentUserImg").attr('src', login.user.photoUrl);
+
+                    Serie.loadFavoriteActionButton();
                     Serie.loadActionButton();
                     hideLoading();
                 }
@@ -44,6 +51,7 @@ Serie = {
             $("#newCommentUserName").text(login.user.name);
             $("#newCommentUserImg").attr('src', login.user.photoUrl);
 
+            Serie.loadFavoriteActionButton();
             Serie.loadActionButton();
             hideLoading();
         }
@@ -75,32 +83,65 @@ Serie = {
         alert(errorMessage);
     },
 
-    loadActionButton: function(){
-        var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === Serie.serie.imdbID; });
-        if (findElement === undefined) {
-            // not found
-            Serie.loadActionAdd();
-        } else {
-            // found one or more items, removing only the first
-            Serie.loadActionRemove(findElement);
+        loadActionButton: function(){
+            var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === Serie.serie.imdbID; });
+            if (findElement === undefined) {
+                // not found
+                Serie.loadActionAdd();
+            } else {
+                // found one or more items, removing only the first
+                Serie.loadActionRemove(findElement);
+            }
+        },
+        loadActionAdd: function(){
+            $('#action-button').html('');
+
+            $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
+            $('#add').click(function() {
+                UserContent.addSerie(Serie.serie);
+                Serie.loadActionRemove(Serie.serie);
+            });
+        },
+        loadActionRemove: function(item){
+            $('#action-button').html('');
+
+            $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
+            $('#remove').click(function() {
+                UserContent.removeSerie(item);
+                Serie.loadActionAdd();
+            });
+        },
+
+        loadFavoriteActionButton: function(){
+            console.log('loadFavoriteActionButton');
+            var findElement = _.find(UserContent.content.favoriteSeries, function(item){ return item.imdbID === Serie.serie.imdbID; });
+            console.log(findElement);
+            if (findElement === undefined) {
+                // not found
+                Serie.loadFavoriteActionAdd();
+            } else {
+                // found one or more items, removing only the first
+                Serie.loadFavoriteActionRemove(findElement);
+            }
+        },
+        loadFavoriteActionAdd: function(){
+            $('#fav-button').html('');
+
+            $('#fav-button').html('<a href="#" id="addFavorite" class="link"><i class="fa fa-star-o"></i></a>');
+            $('#addFavorite').click(function() {
+                UserContent.addFavoriteSerie(Serie.serie);
+                Serie.loadFavoriteActionRemove(Serie.serie);
+            });
+        },
+        loadFavoriteActionRemove: function(item){
+            console.log('loadFavoriteActionRemove');
+            console.log(item);
+            $('#fav-button').html('');
+
+            $('#fav-button').html('<a href="#" id="removeFavorite" class="link"><i class="fa fa-star"></i></a>');
+            $('#removeFavorite').click(function() {
+                UserContent.removeFavoriteSerie(item);
+                Serie.loadFavoriteActionAdd();
+            });
         }
-    },
-    loadActionAdd: function(){
-        $('#action-button').html('');
-
-        $('#action-button').html('<a href="#" id="add" class="link"><i class="icon icon-plus"></i></a>');
-        $('#add').click(function() {
-            UserContent.addSerie(Serie.serie);
-            Serie.loadActionRemove();
-        });
-    },
-    loadActionRemove: function(item){
-        $('#action-button').html('');
-
-        $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
-        $('#remove').click(function() {
-            UserContent.removeSerie(item);
-            Serie.loadActionAdd();
-        });
-    }
 }

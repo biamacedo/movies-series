@@ -18,3 +18,12 @@
     background-size: cover;
     background-position: center;
 }
+
+
+/*Favorite Icon Clicked and not Clicked*/
+.fa-star-o {
+  color: yellow;
+}
+.fa-star {
+  color: yellow;
+}
