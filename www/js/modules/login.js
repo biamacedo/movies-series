@@ -9,7 +9,7 @@ login = {
         name: undefined,
         photoUrl: undefined
     },
-    
+
     isLoggedIn: false,
 
     init: function(){
@@ -42,7 +42,45 @@ login = {
 
     },
 
+    checkLoginUser: function(){
+        console.log('Check Login User');
+        openFB.getLoginStatus(function(loginStatus){
+            // 'connected' = Logged in / 'unknown' = 'Not Logged In'
+            console.log('Connected to Facebook? ' + loginStatus.status);
+            if(loginStatus.status === 'connected'){
+                console.log('Login Saved');
+                login.isLoggedIn = true;
+
+                if (Storage.check() && Storage.checkSavedLogin()){
+                    console.log('Retrieving Login');
+                    login.user = Storage.retrieveLogin();
+
+                    // If saved, retrieving previous user-content and loding it
+                    var tempUserContent = Storage.retrieveUserContent();
+                    console.log('Saved UserContent:' + JSON.stringify(tempUserContent));
+
+                    if (tempUserContent !== undefined &&
+                        tempUserContent !== null){
+                            console.log('Content Found');
+                            UserContent.content = tempUserContent;
+                    } else {
+                        console.log('Content does not exist, creating one');
+                        UserContent.content = UserContent.resetUserContent();
+                    }
+
+                    login.loadUser();
+
+                    loginFinish();
+                }
+            } else {
+                console.log('Login Not Saved');
+                login.isLoggedIn = false;
+            }
+        });
+    },
+
     logoffUser: function(){
+        console.log('Logoff User!');
         $('#username').text('');
         $('#profile-image').attr("src",'');
         Storage.resetUser();

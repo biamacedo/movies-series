@@ -1,3 +1,8 @@
+// =====================================================================
+//  my-app.js
+//  Framework7 main file
+// =====================================================================
+
 // Initialize your app
 var myApp = new Framework7({
       init: false, //Disable App's automatica initialization
@@ -17,7 +22,7 @@ mainView = myApp.addView('.view-main', {
 // Callbacks to run specific code for specific pages, for example for About page:
 myApp.onPageInit('login', function (page) {
     console.log('Login Page Init');
-    checkLoginSavedStorage();
+    login.checkLoginUser();
 
     // Login button
     document.getElementById("login").addEventListener("click", function(){
@@ -71,7 +76,6 @@ myApp.onPageInit('movie', function (page) {
         CommentFunctions.sendComment(Movie.movie.imdbID);
     });
 
-
     $("#addPhoto").click(function(){
         CommentFunctions.addPhoto();
     });
@@ -117,50 +121,12 @@ myApp.onPageInit('serie', function (page) {
 myApp.init();
 
 
-// Function that can be used anywhere on app
-
-function checkLoginSavedStorage(){
-
-    console.log('Check if login saved...');
-    console.log('Check:' + Storage.check());
-    console.log('Check Saved Login:' + Storage.checkSavedLogin());
-    console.log('Saved Login Info:' + window.JSON.stringify(Storage.retrieveLogin()));
-    if (Storage.check() && Storage.checkSavedLogin()){
-        console.log('Login Saved');
-        login.user = Storage.retrieveLogin();
-        login.isLoggedIn = true;
-        // If saved, retrieving previous user-content and loding it
-        var tempUserContent = Storage.retrieveUserContent();
-        console.log('Saved UserContent:');
-        console.log(tempUserContent);
-
-        if (tempUserContent !== undefined &&
-            tempUserContent !== null){
-                console.log('Content Found');
-                UserContent.content = tempUserContent;
-        } else {
-            console.log('Content does not exist, creating one');
-            UserContent.content = UserContent.resetUserContent();
-        }
-
-		login.loadUser();
-
-        loginFinish();
-    }
-};
+// === Function that can be used anywhere on app ===
 
 function loginFinish(){
     myApp.closeModal('.login-screen');
 }
 
-function dialog(message, title){
-    navigator.notification.alert(
-        message,    // message
-        null,       // callback
-        title, // title
-        'OK'        // buttonName
-    );
-}
 
 function showLoading(){
     myApp.showIndicator();
@@ -199,8 +165,4 @@ function appReady(){
             //mainView.router.back();
         }
     }, false);
-}
-
-function scrollAddComments(){
-    $$('#commentFooterScroll').scrollTop();
 }

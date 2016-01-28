@@ -3,6 +3,7 @@
 
 CommentFunctions = {
     loadComments: function(itemImdbID){
+        showLoading();
         Social.retrieveComments(itemImdbID).then(function(results) {
             console.log("Successfully retrieved " + results.length + " comments.");
 
@@ -18,6 +19,7 @@ CommentFunctions = {
                                     </li>'
 
                 $("#commentList").html(message);
+                hideLoading();
             } else {
                 $.each(results, function(i, object) {
                     console.log(object);
@@ -73,6 +75,7 @@ CommentFunctions = {
                     console.log(newComment);
 
                     $("#commentList").append(newComment);
+                    hideLoading();
                 });
             }
         }, function(error){
@@ -87,6 +90,7 @@ CommentFunctions = {
                                 </li>'
 
             $("#commentList").html(errorMessage);
+            hideLoading();
         });
 
     },

@@ -8,6 +8,7 @@ UserContent = {
         movies: [],
         series: []
     },
+    
     resetUserContent: function(){
         Storage.resetUserContent();
         UserContent.content = { movies: [], series: [] };
@@ -20,7 +21,7 @@ UserContent = {
         if (findElement === undefined){
             UserContent.content.movies.push(movie);
             Storage.saveUserContent();
-            dialog("Movie Added!", "Success");
+            Toast.showLongCenter('Movie Added!');
         } else {
             dialog("You cannot add the same movie twice!", "Error");
         }
@@ -35,7 +36,7 @@ UserContent = {
             console.log('Element Deleted: ' + window.JSON.stringify(moviesFiltered));
             UserContent.content.movies = moviesFiltered;
             Storage.saveUserContent();
-            dialog("Movie Deleted!", "Success");
+            Toast.showLongCenter('Movie Deleted!');
         } else {
             dialog("Could not find movie to remove!", "Error");
         }
@@ -47,7 +48,7 @@ UserContent = {
         if (findElement === undefined){
             UserContent.content.series.push(serie);
             Storage.saveUserContent();
-            dialog("Serie Added!", "Success");
+            Toast.showLongCenter('Serie Added!');
         } else {
             dialog("You cannot add the same serie twice!", "Error");
         }
@@ -62,7 +63,7 @@ UserContent = {
             console.log('Element Deleted: ' + window.JSON.stringify(seriesFiltered));
             UserContent.content.series = seriesFiltered;
             Storage.saveUserContent();
-            dialog("Serie Deleted!", "Success");
+            Toast.showLongCenter('Serie Deleted!');
         } else {
             dialog("Could not find serie to remove!", "Error");
         }
