@@ -1,32 +1,22 @@
+// =====================================================================
+//  camera.js
+//  Contains code related to camera sensor manipulation
+// =====================================================================
 
+CameraSensor = {
 
-Camera = {
-    // getPicture(){
-    //     function onSuccess(imageData) {
-    //         var image = document.getElementById('myImage');
-    //         image.src = ;
-    //         return "data:image/jpeg;base64," + imageData;
-    //     }
-    //
-    //     function onFail(message) {
-    //         alert('Failed because: ' + message);
-    //     };
-    //
-    //     navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    //         destinationType: Camera.DestinationType.DATA_URL
-    //     });
-    // }
+    getPicture: function() {
+        var q = Q.defer();
 
-    getPicture2: function(options) {
-          var q = Q.defer();
-
-          navigator.camera.getPicture(function(result) {
+        navigator.camera.getPicture(function(imageData) {
             // Do any magic you need
-            q.resolve(result);
-          }, function(err) {
-            q.reject(err);
-          }, options);
+            q.resolve("data:image/jpeg;base64," + imageData);
+        }, function(message) {
+            q.reject(message);
+        }, {    quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL
+        });
 
-          return q.promise;
-        }
-}
+        return q.promise;
+    }
+};

@@ -25,4 +25,5 @@
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="~1.2.0" />
     <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
+    <plugin name="cordova-plugin-camera" spec="~2.1.0" />
 </widget>

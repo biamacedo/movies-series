@@ -15,9 +15,7 @@ Social = {
         query.descending("createdAt");
         return query.find();
     },
-    insertNewComment(itemId, comment, user){
-        var commentItemId = itemId;
-        var commentText = comment;
+    insertNewComment(commentItemId, commentText, user, commentImages){
         var commentUserId = user.id;
         var commentUserName = user.name;
         var commentUserImg = user.photoUrl;
@@ -31,6 +29,13 @@ Social = {
         newComment.set("commentUserName", commentUserName);
         newComment.set("commentUserImg", commentUserImg);
 
-        return newComment.save(null);
+        _.each(commentImages, function(imageBase64){
+            var imageFile = new Parse.File(user.id + commentItemId + "-commentImage.txt", { base64: imageBase64 });
+            //newComment.add("commentImages", imageFile);
+            newComment.set("commentImages", imageFile);
+        });
+
+
+        return newComment.save();
     }
 }

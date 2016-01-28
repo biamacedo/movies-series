@@ -62,17 +62,17 @@ myApp.onPageInit('movie', function (page) {
 
     $("#commentForm").submit(function(e){
         e.preventDefault(); // cancel default form submit
-        Movie.sendComment();
+        CommentFunctions.sendComment(Movie.movie.imdbID);
         return false;
     });
 
     $("#sendComment").click(function(){
-        Movie.sendComment();
+        CommentFunctions.sendComment(Movie.movie.imdbID);
     });
 
 
     $("#addPhoto").click(function(){
-
+        CommentFunctions.addPhoto();
     });
 
     console.log(page.query);
@@ -90,14 +90,17 @@ myApp.onPageInit('serie', function (page) {
 
     $("#commentForm").submit(function(e){
         e.preventDefault(); // cancel default form submit
-        Serie.sendComment();
+        CommentFunctions.sendComment(Serie.serie.imdbID);
         return false;
     });
 
     $("#sendComment").click(function(){
-        Serie.sendComment();
+        CommentFunctions.sendComment(Serie.serie.imdbID);
     });
 
+    $("#addPhoto").click(function(){
+        CommentFunctions.addPhoto();
+    });
 
     console.log(page.query);
 
@@ -192,4 +195,8 @@ function appReady(){
             //mainView.router.back();
         }
     }, false);
+}
+
+function scrollAddComments(){
+    $$('#commentFooterScroll').scrollTop();
 }

@@ -7,9 +7,10 @@ login = {
     user: {
         id: undefined,
         name: undefined,
-        photoUrl: undefined,
-        isLoggedIn: false
+        photoUrl: undefined
     },
+    
+    isLoggedIn: false,
 
     init: function(){
         // Defaults to sessionStorage for storing the Facebook token
