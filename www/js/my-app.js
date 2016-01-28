@@ -29,6 +29,7 @@ myApp.onPageInit('login', function (page) {
 myApp.onPageInit('index', function (page) {
     console.log('Main Page Init');
 
+    console.log('Is Logged In? ' + login.isLoggedIn);
     if (login.isLoggedIn){
         Main.refreshPage();
     }
@@ -127,15 +128,19 @@ function checkLoginSavedStorage(){
     if (Storage.check() && Storage.checkSavedLogin()){
         console.log('Login Saved');
         login.user = Storage.retrieveLogin();
+        login.isLoggedIn = true;
         // If saved, retrieving previous user-content and loding it
         var tempUserContent = Storage.retrieveUserContent();
+        console.log('Saved UserContent:');
         console.log(tempUserContent);
 
         if (tempUserContent !== undefined &&
             tempUserContent !== null){
                 console.log('Content Found');
                 UserContent.content = tempUserContent;
-                login.isLoggedIn = true;
+        } else {
+            console.log('Content does not exist, creating one');
+            UserContent.content = UserContent.resetUserContent();
         }
 
 		login.loadUser();
@@ -179,7 +184,6 @@ function appReady(){
             navigator.notification.confirm(
                 'Do you want to exit?!', // message
                 function(buttonIndex) { // callback to invoke with index of button pressed
-                     alert('You selected button ' + buttonIndex);
                      if(buttonIndex === 1){
                          console.log('Exit confirmed');
                          navigator.app.clearHistory();

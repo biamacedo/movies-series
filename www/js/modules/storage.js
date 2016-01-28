@@ -44,13 +44,18 @@ Storage = {
     saveUserContent: function(){
         console.log('Saving User Content to Storage');
         var userContentStr = window.JSON.stringify(UserContent.content);
+        console.log('User Content Saved: ');
         console.log(userContentStr);
         Storage.storage.setItem("userContent-"+login.user.id, userContentStr);
     },
     retrieveUserContent: function (){
         console.log('Retrieving User Content from Storage');
         var userContentStr = Storage.storage.getItem("userContent-"+login.user.id);
+        console.log('User Content Saved: ');
         console.log(userContentStr);
         return window.JSON.parse(userContentStr);
-    }
+    },
+    resetUserContent: function(){
+        Storage.storage.removeItem("userContent-"+login.user.id);
+    },
 }

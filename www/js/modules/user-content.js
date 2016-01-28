@@ -8,6 +8,11 @@ UserContent = {
         movies: [],
         series: []
     },
+    resetUserContent: function(){
+        Storage.resetUserContent();
+        UserContent.content = { movies: [], series: [] };
+        Storage.saveUserContent();
+    },
     /* Movie Functions */
     addMovie: function(movie){
         var findElement = _.find(UserContent.content.movies, function(item){ return item.imdbID === movie.imdbID; });

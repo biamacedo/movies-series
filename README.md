@@ -13,6 +13,9 @@ Movies & Series is a social mobile app
 * [OpenFB](https://github.com/ccoenraets/OpenFB) for Facebook integration
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/) for icons
 * [Parse](https://www.parse.com/) as backend for social/commentary
+* [Moment.js](http://momentjs.com/)
+* [Underscore.js](http://underscorejs.org/)
+* [Q](http://documentup.com/kriskowal/q/)
 
 ## Device Sensors/Functionalities Used
 
@@ -30,6 +33,8 @@ Movies & Series is a social mobile app
 * [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser), used on the Facebook Login only
 * [cordova-plugin-dialogs](https://github.com/apache/cordova-plugin-dialogs) for native alert dialogs
 * [cordova-plugin-camera](https://github.com/apache/cordova-plugin-camera), used for the user to take pictures and add them to their comments
+* [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
+
 
 > To add plugins use the following command on terminal:
 > ```

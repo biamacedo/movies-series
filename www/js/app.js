@@ -31,23 +31,23 @@ var app = {
         // Phisical Back Button Solution
         appReady();
 
-        // Keyboard In Front of input field solution
-        console.log('Adding Event Focus Out');
-        document.addEventListener('focusout', function(e) {
-            console.log('Event Focus Out');
-            window.scrollTo(0, 0);
-            window.scrollTo(0,document.body.scrollHeight);
-        });
-        console.log('Adding Event Focus In');
-        document.addEventListener('focusin', function(e) {
-            console.log('Event Focus In');
-            //window.scrollTo(0,document.body.scrollHeight);
-
-            // $('html, body').animate({
-            //     scrollTop: $("#commentFooterScroll").offset().top
-            // }, 2000);
-            scrollAddComments();
-        });
+        // // Keyboard In Front of input field solution
+        // console.log('Adding Event Focus Out');
+        // document.addEventListener('focusout', function(e) {
+        //     console.log('Event Focus Out');
+        //     window.scrollTo(0, 0);
+        //     window.scrollTo(0,document.body.scrollHeight);
+        // });
+        // console.log('Adding Event Focus In');
+        // document.addEventListener('focusin', function(e) {
+        //     console.log('Event Focus In');
+        //     //window.scrollTo(0,document.body.scrollHeight);
+        //
+        //     // $('html, body').animate({
+        //     //     scrollTop: $("#commentFooterScroll").offset().top
+        //     // }, 2000);
+        //     scrollAddComments();
+        // });
         //
         // console.log('Adding Event showkeyboard and hidekeyboard');
         // document.addEventListener("showkeyboard", function(){ alert("Keyboard is ON"); scrollAddComments();}, false);

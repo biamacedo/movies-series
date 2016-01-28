@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/display-item.css">
   </head>
-  <body>
+  <body class="theme-indigo">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
 
@@ -167,12 +167,14 @@
                 </div>
 
                 <!-- Scrollable page content-->
-                <div class="page-content">
+                <div class="page-content" style="background: url('img/background-img.png') repeat-y center center; background-color: #364D9C;">
                     <!-- Top Tabs -->
                     <div class="tabs tabs-top">
                         <div id ="moviesTab" class="tab tab1 active">
                             <!-- Movie Page  -->
                             <div class='container'>
+
+                                <div id="emptyMessage"></div>
 
                                 <div id="main" class="column-container-12 "></div>
 
@@ -183,6 +185,8 @@
                         <div id ="seriesTab" class="tab tab2">
                             <!-- Serie Page  -->
                             <div class='container'>
+
+                                <div id="emptyMessage"></div>
 
                                 <div id="main" class="column-container-12 "></div>
 

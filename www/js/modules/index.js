@@ -7,9 +7,12 @@ Main = {
     totalStories: 0,
 
     refreshPage: function(){
+        console.log('Starting Grid Refresh');
         showLoading();
         Main.totalStories = UserContent.content.movies.length
         console.log('Total movies: ' + Main.totalStories);
+
+        Main.loadEmptyMessage(Main.moviesTab, 'movie');
 
         Main.loadFeature(Main.moviesTab, UserContent.content.movies);
         Main.loadMain(Main.moviesTab, UserContent.content.movies);
@@ -19,11 +22,35 @@ Main = {
         Main.totalStories = UserContent.content.series.length
         console.log('Total series: ' + Main.totalStories);
 
+
+        Main.loadEmptyMessage(Main.seriesTab, 'tv series');
+
         Main.loadFeature(Main.seriesTab, UserContent.content.series);
         Main.loadMain(Main.seriesTab, UserContent.content.series);
         Main.loadSub(Main.seriesTab, UserContent.content.series);
         hideLoading();
     },
+
+    loadEmptyMessage: function(tab, type){
+        $(tab + ' #emptyMessage').html("");
+
+        if (Main.totalStories <= 0){
+            var message = '  <div class="list-block cards-list">\
+                                <ul>\
+                                    <li class="card">\
+                                        <div class="card-content">\
+                                            <div class="card-content-inner">\
+                                                <p>No ' + type + ' yet. Search for your favorite ' + type + ' and add it to appear here!</p>\
+                                            </div>\
+                                        </div>\
+                                    </li>\
+                                </ul>\
+                            </div>'
+
+            $(tab + ' #emptyMessage').html(message);
+        }
+    },
+
     loadFeature: function(tab, list){
         $(tab + ' #main').html("");
 
