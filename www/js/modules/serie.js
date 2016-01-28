@@ -6,28 +6,49 @@
 
 Serie = {
     serie: undefined,
-    loadSerie: function(id){
+    loadSerie: function(id, saved){
         showLoading();
-        imdb.getById(id).done(function(data){
-            if (data.Response !== undefined && data.Response === 'False'){
-                hideLoading();
-                Serie.loadError(data.Error);
-            } else {
-                console.log(data);
-                Serie.serie = data;
+        if(saved === undefined){
+            // From Search, necessary to get info from imdb
+            console.log('From Search, necessary to get info from imdb');
+            imdb.getById(id).done(function(data){
+                if (data.Response !== undefined && data.Response === 'False'){
+                    hideLoading();
+                    Serie.loadError(data.Error);
+                } else {
+                    console.log(data);
+                    Serie.serie = data;
 
-                Serie.loadSerieToPage(Serie.serie);
+                    Serie.loadSerieToPage(Serie.serie);
 
-                Serie.loadActionButton();
+                    Serie.loadActionButton();
+                    hideLoading();
+                }
+            })
+            .fail(function(error){
                 hideLoading();
-            }
-        })
-        .fail(function(error){
+                console.log(error);
+                Serie.loadError(error.Error);
+            });
+        } else {
+            // From Grid, no need to search, already have complete object saved
+            console.log('From Grid, no need to search, already have complete object');
+            var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === id; });
+            console.log(findElement);
+            Serie.serie = findElement;
+
+            Serie.loadSerieToPage(Serie.serie);
+            Serie.loadComments();
+
+            // Load User Info to New Comment card
+            $("#newCommentUserName").text(login.user.name);
+            $("#newCommentUserImg").attr('src', login.user.photoUrl);
+
+            Serie.loadActionButton();
             hideLoading();
-            console.log(error);
-            Serie.loadError(error.Error);
-        });
+        }
     },
+
 
     loadSerieToPage: function(serie){
         var poster = "img/default-poster.png";
@@ -43,7 +64,7 @@ Serie = {
         $('#genre').text(serie.Genre);
         $('#director').text(serie.Director);
         $('#plot').text(serie.Plot);
-        $('#writers').text(serie.Writers);
+        if(serie.Writers !== "") {$('#writers').text(serie.Writers);}
         $('#actors').text(serie.Actors);
         $('#awards').text(serie.Awards);
         $('#metascore').text(serie.Metascore);
@@ -55,16 +76,15 @@ Serie = {
     },
 
     loadActionButton: function(){
-        var result = $.grep(UserContent.content.series, function(e){ return e.id == Serie.id; });
-        if (result.length == 0) {
+        var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === Serie.serie.imdbID; });
+        if (findElement === undefined) {
             // not found
             Serie.loadActionAdd();
         } else {
             // found one or more items, removing only the first
-            Serie.loadActionRemove(result);
+            Serie.loadActionRemove(findElement);
         }
     },
-
     loadActionAdd: function(){
         $('#action-button').html('');
 
@@ -74,13 +94,12 @@ Serie = {
             Serie.loadActionRemove();
         });
     },
-
-    loadActionRemove: function(result){
+    loadActionRemove: function(item){
         $('#action-button').html('');
 
         $('#action-button').html('<a href="#" id="remove" class="link"><i class="fa fa-times"></i></a>');
         $('#remove').click(function() {
-            UserContent.removeSerie(result[0]);
+            UserContent.removeSerie(item);
             Serie.loadActionAdd();
         });
     },
@@ -156,7 +175,7 @@ Serie = {
             Social.insertNewComment(Serie.serie.imdbID, commentText, login.user).then(function(newComment){
                 // Execute any logic that should take place after the object is saved.
                 console.log('New comment created with comment id: ' + newComment.id);
-                $("#commentText").text("");
+                $("#inputCommentText").text("");
                 hideLoading();
                 dialog('Sent Comment Successfully!', "New Comment");
                 Serie.loadComments();

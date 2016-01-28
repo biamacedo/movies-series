@@ -174,7 +174,7 @@ Movie = {
             Social.insertNewComment(Movie.movie.imdbID, commentText, login.user).then(function(newComment){
                 // Execute any logic that should take place after the object is saved.
                 console.log('New comment created with comment id: ' + newComment.id);
-                $("#commentText").text("");
+                $("#inputCommentText").text("");
                 hideLoading();
                 dialog('Sent Comment Successfully!', "New Comment");
                 Movie.loadComments();

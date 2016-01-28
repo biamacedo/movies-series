@@ -48,9 +48,11 @@ myApp.onPageInit('search', function (page) {
     console.log('Search Page Init');
 
     // Search Keyboard Enter
-    $("#searchForm").submit(function(){
+    $("#searchForm").submit(function(e){
+        e.preventDefault(); // cancel default form submit
         var inputSearch = $("#searchInput").val();
         Search.searchForMovie(inputSearch);
+        return false;
     });
 
 });
@@ -58,8 +60,10 @@ myApp.onPageInit('search', function (page) {
 myApp.onPageInit('movie', function (page) {
     console.log('Movie Page Init');
 
-    $("#commentForm").submit(function(){
+    $("#commentForm").submit(function(e){
+        e.preventDefault(); // cancel default form submit
         Movie.sendComment();
+        return false;
     });
 
     $("#sendComment").click(function(){
@@ -83,6 +87,17 @@ myApp.onPageInit('movie', function (page) {
 
 myApp.onPageInit('serie', function (page) {
     console.log('Serie Page Init');
+
+    $("#commentForm").submit(function(e){
+        e.preventDefault(); // cancel default form submit
+        Serie.sendComment();
+        return false;
+    });
+
+    $("#sendComment").click(function(){
+        Serie.sendComment();
+    });
+
 
     console.log(page.query);
 
@@ -174,7 +189,7 @@ function appReady(){
         } else {
             console.log('Not At Index');
             console.log(navigator.app);
-            mainView.router.back();
+            //mainView.router.back();
         }
     }, false);
 }
