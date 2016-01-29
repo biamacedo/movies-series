@@ -40,7 +40,17 @@ Storage = {
     resetUser: function(){
         Storage.storage.removeItem("user");
     },
-    /* === Storage User Content === */
+    /* === Storage Uer Content === */
+    checkSavedUserContent: function(){
+        var contentStr = Storage.storage.getItem("userContent-"+login.user.id);
+        if (typeof contentStr !== 'undefined'
+         && contentStr !== null
+         && contentStr !== '') {
+            return true;
+        } else {
+            return false;
+        }
+    },
     saveUserContent: function(){
         console.log('Saving User Content to Storage');
         var userContentStr = window.JSON.stringify(UserContent.content);

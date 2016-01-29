@@ -36,6 +36,7 @@ myApp.onPageInit('index', function (page) {
 
     console.log('Is Logged In? ' + login.isLoggedIn);
     if (login.isLoggedIn){
+        login.loadUser();
         Main.refreshPage();
     }
 
@@ -134,6 +135,14 @@ function showLoading(){
 
 function hideLoading(){
     myApp.hideIndicator();
+}
+
+function loadingHandle(option){
+    if(option){
+        myApp.showIndicator();
+    } else {
+        myApp.hideIndicator();
+    }
 }
 
 // Device Back Button Problem //

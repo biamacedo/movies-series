@@ -41,19 +41,13 @@ login = {
                alert('Facebook login failed: ' + response.error);
                hideLoading();
            }
-        }, {scope: 'email,public_profile'});
+       }, {scope: 'email,public_profile'}, loadingHandle);
 
     },
 
     checkLoginUser: function(){
         showLoading();
         console.log('Check Login User');
-        // openFB.getLoginStatus(function(loginStatus){
-        //     // 'connected' = Logged in / 'unknown' = 'Not Logged In'
-        //     console.log('Connected to Facebook? ' + loginStatus.status);
-        //     if(loginStatus.status === 'connected'){
-        //         console.log('Login Saved');
-
         if (Storage.check() && Storage.checkSavedLogin()){
             console.log('Retrieving Login');
             login.user = Storage.retrieveLogin();
@@ -77,12 +71,6 @@ login = {
             loginFinish();
         }
         hideLoading();
-        //     } else {
-        //         console.log('Login Not Saved');
-        //         login.isLoggedIn = false;
-        //         hideLoading();
-        //     }
-        // });
     },
 
     logoffUser: function(){

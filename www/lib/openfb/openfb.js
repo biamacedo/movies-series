@@ -111,7 +111,7 @@ var openFB = (function () {
      * @param options - options.scope: The set of Facebook permissions requested
      * @returns {*}
      */
-    function login(callback, options) {
+    function login(callback, options, spinnerHandle) {
 
         var loginWindow,
             startTime,
@@ -158,6 +158,8 @@ var openFB = (function () {
         startTime = new Date().getTime();
         loginWindow = window.open(loginURL + '?client_id=' + fbAppId + '&redirect_uri=' + redirectURL +
             '&response_type=token&scope=' + scope, '_blank', 'location=no,clearcache=yes');
+            spinnerHandle(true);
+        loginWindow.onload = function() { spinnerHandle(false); };
 
         // If the app is running in Cordova, listen to URL changes in the InAppBrowser until we get a URL with an access_token or an error
         if (runningInCordova) {
