@@ -61,6 +61,19 @@ Movies & Series is a social mobile app
 2. Add platforms using: ```cordova platforms add <browser/android/ios>```
 3. Run app using: ```cordova run <browser/android/ios>```
 
+## Screen Shots:
+
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/1.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/2.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/3.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/4.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/5.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/6.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/7.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/8.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/9.png" width="200">
+<img src="https://github.com/biamacedo/movies-series/blob/master/screenshots/10.png" width="200">
+
 * * *
 
 *Authors: Beatriz Macedo & Fernando Santos*
