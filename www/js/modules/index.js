@@ -44,7 +44,7 @@ Main = {
                                 <ul>\
                                     <li class="card">\
                                         <div class="card-content">\
-                                            <div class="card-content-inner">\
+                                            <div class="card-content-inner"  style="text-align:center;">\
                                                 <p>No ' + type + ' yet. Search for your favorite ' + type + ' and add it to appear here!</p>\
                                             </div>\
                                         </div>\

@@ -40,10 +40,9 @@ Search = {
                                     <div class="item-inner">\
                                         <div class="item-title-row">\
                                             <div class="item-title">' + item.Title + '</div>\
-                                            <!-- <div class="item-after">$15</div> -->\
                                         </div>\
-                                        <div class="item-subtitle">' + item.Year + '</div>\
-                                        <div class="item-text">' + item.Type + '</div>\
+                                        <div class="item-subtitle">(' + item.Year + ')</div>\
+                                        <div class="item-text">' + toTitleCase(item.Type) + '</div>\
                                     </div>\
                                 </a>\
                             </li>';
@@ -57,7 +56,7 @@ Search = {
 
         var message = '  <li class="card">\
                                 <div class="card-content">\
-                                    <div class="card-content-inner">\
+                                    <div class="card-content-inner" style="text-align:center;">\
                                         <p>' + result + '</p>\
                                     </div>\
                                 </div>\
