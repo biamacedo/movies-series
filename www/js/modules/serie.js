@@ -18,6 +18,7 @@ Serie = {
                 } else {
                     console.log(data);
                     Serie.serie = data;
+                    Serie.serie.isFavorite = false;
 
                     Serie.loadSerieToPage(Serie.serie);
 
@@ -100,6 +101,7 @@ Serie = {
             $('#add').click(function() {
                 UserContent.addSerie(Serie.serie);
                 Serie.loadActionRemove(Serie.serie);
+                Serie.loadFavoriteActionButton();
             });
         },
         loadActionRemove: function(item){
@@ -109,19 +111,24 @@ Serie = {
             $('#remove').click(function() {
                 UserContent.removeSerie(item);
                 Serie.loadActionAdd();
+                Serie.loadFavoriteActionButton();
             });
         },
 
         loadFavoriteActionButton: function(){
             console.log('loadFavoriteActionButton');
-            var findElement = _.find(UserContent.content.favoriteSeries, function(item){ return item.imdbID === Serie.serie.imdbID; });
+            var findElement = _.find(UserContent.content.series, function(item){ return item.imdbID === Serie.serie.imdbID; });
             console.log(findElement);
-            if (findElement === undefined) {
-                // not found
-                Serie.loadFavoriteActionAdd();
+            if (findElement !== undefined){
+                if (Serie.serie.isFavorite === false) {
+                    // not found
+                    Serie.loadFavoriteActionAdd();
+                } else {
+                    // found one or more items, removing only the first
+                    Serie.loadFavoriteActionRemove(findElement);
+                }
             } else {
-                // found one or more items, removing only the first
-                Serie.loadFavoriteActionRemove(findElement);
+                $('#fav-button').html('');
             }
         },
         loadFavoriteActionAdd: function(){

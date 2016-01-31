@@ -18,6 +18,7 @@ Movie = {
                 } else {
                     console.log(data);
                     Movie.movie = data;
+                    Movie.movie.isFavorite = false;
 
                     Movie.loadMovieToPage(Movie.movie);
                     CommentFunctions.loadComments(Movie.movie.imdbID);
@@ -98,6 +99,7 @@ Movie = {
         $('#add').click(function() {
             UserContent.addMovie(Movie.movie);
             Movie.loadActionRemove(Movie.movie);
+            Movie.loadFavoriteActionButton();
         });
     },
     loadActionRemove: function(item){
@@ -107,19 +109,24 @@ Movie = {
         $('#remove').click(function() {
             UserContent.removeMovie(item);
             Movie.loadActionAdd();
+            Movie.loadFavoriteActionButton();
         });
     },
 
     loadFavoriteActionButton: function(){
         console.log('loadFavoriteActionButton');
-        var findElement = _.find(UserContent.content.favoriteMovies, function(item){ return item.imdbID === Movie.movie.imdbID; });
+        var findElement = _.find(UserContent.content.movies, function(item){ return item.imdbID === Movie.movie.imdbID; });
         console.log(findElement);
-        if (findElement === undefined) {
-            // not found
-            Movie.loadFavoriteActionAdd();
+        if (findElement !== undefined){
+            if (Movie.movie.isFavorite === false) {
+                // not found
+                Movie.loadFavoriteActionAdd();
+            } else {
+                // found one or more items, removing only the first
+                Movie.loadFavoriteActionRemove(findElement);
+            }
         } else {
-            // found one or more items, removing only the first
-            Movie.loadFavoriteActionRemove(findElement);
+            $('#fav-button').html('');
         }
     },
     loadFavoriteActionAdd: function(){

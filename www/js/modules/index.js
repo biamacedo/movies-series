@@ -67,10 +67,14 @@ Main = {
                 poster = list[Main.index].Poster;
             }
 
-            var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
-            console.log('Found Element ' + findElement);
+            // var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
+            // console.log('Found Element ' + findElement);
+            // var favoriteIcon = "";
+            // if (findElement !== undefined){
+            //     favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
+            // }
             var favoriteIcon = "";
-            if (findElement !== undefined){
+            if (list[Main.index].isFavorite === true){
                 favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
             }
 
@@ -107,10 +111,14 @@ Main = {
             }
 
 
-            var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
-            console.log('Found Element ' + findElement);
+            // var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
+            // console.log('Found Element ' + findElement);
+            // var favoriteIcon = "";
+            // if (findElement !== undefined){
+            //     favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
+            // }
             var favoriteIcon = "";
-            if (findElement !== undefined){
+            if (list[Main.index].isFavorite === true){
                 favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
             }
 
@@ -145,10 +153,14 @@ Main = {
                 poster = list[Main.index].Poster;
             }
 
-            var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
-            console.log('Found Element ' + findElement);
+            // var findElement = _.find(favList, function(item){ return item.imdbID === list[Main.index].imdbID; });
+            // console.log('Found Element ' + findElement);
+            // var favoriteIcon = "";
+            // if (findElement !== undefined){
+            //     favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
+            // }
             var favoriteIcon = "";
-            if (findElement !== undefined){
+            if (list[Main.index].isFavorite === true){
                 favoriteIcon = '<i class="fa fa-star fa-2x"></i>';
             }
 
